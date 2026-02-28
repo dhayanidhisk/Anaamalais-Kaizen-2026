@@ -111,7 +111,6 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Success & Dashboard Modal Styles */
         .success-modal, .dashboard-modal {
             display: none;
             position: fixed;
@@ -129,12 +128,13 @@
             top: 12px;
             right: 12px;
             z-index: 50;
-            padding: 4px 10px;
+            padding: 6px 14px;
             border-radius: 99px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            transition: all 0.3s ease;
         }
 
         @keyframes pop {
@@ -149,7 +149,7 @@
 </head>
 <body class="min-h-screen">
 
-    <div id="connectionStatus" class="connection-indicator bg-amber-100 text-amber-600 border border-amber-200">Connecting...</div>
+    <div id="connectionStatus" class="connection-indicator bg-amber-100 text-amber-600 border border-amber-200">CONNECTING...</div>
     <div id="errorToast">Something went wrong. Please try again.</div>
 
     <div class="floating-bg -top-20 -left-20"></div>
@@ -173,11 +173,11 @@
             </div>
 
             <div class="fade-up" style="animation-delay: 0.1s;">
-                <h1 class="text-4xl font-extrabold tracking-tight leading-tight">Kaizen <span class="text-blue-200">2026</span></h1>
-                <p class="text-blue-50 font-medium text-lg mt-1">Continuous Improvement Program</p>
+                <h1 class="text-4xl font-extrabold tracking-tight leading-tight">Kaizen Program <span class="text-blue-200 text-3xl">2026</span></h1>
+                <p class="text-blue-50 font-medium text-lg mt-1">For Young Indians</p>
                 <div class="flex gap-2 mt-5">
-                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold">Leadership</span>
-                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold">Innovation</span>
+                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase">Continuous Improvement</span>
+                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase">Yi Partner</span>
                 </div>
             </div>
         </div>
@@ -187,8 +187,8 @@
         <div class="max-w-md mx-auto premium-card rounded-[2.5rem] p-8 fade-up" style="animation-delay: 0.3s;">
             <div class="flex items-end justify-between mb-8">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Your Voice</h2>
-                    <p class="text-gray-500 text-sm font-medium">Data saved securely to Cloud</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Feedback Form</h2>
+                    <p class="text-gray-500 text-sm font-medium">Your data is saved securely</p>
                 </div>
                 <div class="bg-blue-50 p-3 rounded-2xl">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -196,10 +196,11 @@
             </div>
 
             <form id="feedbackForm" class="space-y-6">
+                <!-- Name -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Full Name</label>
                     <div class="relative">
-                        <input type="text" id="name" required placeholder="John Doe" 
+                        <input type="text" id="name" required placeholder="e.g. John Smith" 
                             class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
                         <div class="input-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -207,32 +208,33 @@
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="input-group">
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact</label>
-                        <div class="relative">
-                            <input type="tel" id="contact" required placeholder="+91 00000 00000" 
-                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
-                            <div class="input-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Email</label>
-                        <div class="relative">
-                            <input type="email" id="email" required placeholder="name@domain.com" 
-                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
-                            <div class="input-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            </div>
+                <!-- Contact -->
+                <div class="input-group">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact Number</label>
+                    <div class="relative">
+                        <input type="tel" id="contact" required placeholder="+91 ..." 
+                            class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                        <div class="input-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         </div>
                     </div>
                 </div>
 
+                <!-- Email -->
                 <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand / Service</label>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Email Address</label>
+                    <div class="relative">
+                        <input type="email" id="email" required placeholder="name@email.com" 
+                            class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                        <div class="input-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand -->
+                <div class="input-group">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand or Service</label>
                     <div class="relative">
                         <input type="text" id="brand" required placeholder="Your business name" 
                             class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
@@ -242,10 +244,11 @@
                     </div>
                 </div>
 
+                <!-- Feedback -->
                 <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Feedback</label>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Your Feedback</label>
                     <div class="relative">
-                        <textarea id="feedback" required rows="4" placeholder="How can we improve?" 
+                        <textarea id="feedback" required rows="4" placeholder="How was your experience?" 
                             class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300 resize-none"></textarea>
                         <div class="input-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
@@ -255,7 +258,7 @@
 
                 <button type="submit" id="submitBtn"
                     class="w-full btn-shimmer text-white font-bold py-5 rounded-2xl shadow-xl transform active:scale-[0.97] transition-all duration-200 flex items-center justify-center gap-2 group">
-                    <span>Submit Evaluation</span>
+                    <span>Submit Feedback</span>
                     <svg class="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
             </form>
@@ -274,7 +277,7 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
             </div>
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Brilliant!</h3>
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Thank You!</h3>
             <p class="text-gray-500 font-medium leading-relaxed">Your feedback has been successfully shared with the Kaizen team.</p>
             <button onclick="closeModal('successModal')" class="mt-8 w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
                 Great, Thanks!
@@ -282,7 +285,7 @@
         </div>
     </div>
 
-    <!-- Hidden Dashboard Modal -->
+    <!-- Dashboard Modal -->
     <div id="dashboardModal" class="dashboard-modal">
         <div class="bg-white rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl overflow-hidden relative animate-pop">
             <button onclick="closeModal('dashboardModal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900">
@@ -321,23 +324,19 @@
         import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // Environment setup
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'kaizen-3d0c1';
         
-        // Updated config to include your specific credentials for GitHub hosting
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "AIzaSyDVL4cgD2B1M93rkTbEUXCJ-8FK4P2LsGU", 
-                authDomain: "kaizen-3d0c1.firebaseapp.com",
-                projectId: "kaizen-3d0c1",
-                storageBucket: "kaizen-3d0c1.firebasestorage.app",
-                messagingSenderId: "510652968892",
-                appId: "1:510652968892:web:36f4e4e1724df0246345b9",
-                measurementId: "G-3R7R9HNHDM"
-            };
+        // HARDCODED CONFIG FOR EXTERNAL HOSTING (GITHUB)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDVL4cgD2B1M93rkTbEUXCJ-8FK4P2LsGU", 
+            authDomain: "kaizen-3d0c1.firebaseapp.com",
+            projectId: "kaizen-3d0c1",
+            storageBucket: "kaizen-3d0c1.firebasestorage.app",
+            messagingSenderId: "510652968892",
+            appId: "1:510652968892:web:36f4e4e1724df0246345b9",
+            measurementId: "G-3R7R9HNHDM"
+        };
 
-        // Services
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
@@ -345,29 +344,32 @@
         let currentUser = null;
         let cachedData = [];
 
-        // Auth Logic (Rule 3)
         const initAuth = async () => {
             const statusEl = document.getElementById('connectionStatus');
             try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                statusEl.innerText = "Connected";
+                // Force sign in anonymously to ensure write access if Rules allow it
+                const userCredential = await signInAnonymously(auth);
+                currentUser = userCredential.user;
+                
+                statusEl.innerText = "CONNECTED";
                 statusEl.className = "connection-indicator bg-green-100 text-green-600 border border-green-200";
+                console.log("Auth Successful:", currentUser.uid);
             } catch (err) {
                 console.error("Auth error:", err);
-                statusEl.innerText = "Offline Mode";
+                statusEl.innerText = "OFFLINE MODE";
                 statusEl.className = "connection-indicator bg-red-100 text-red-600 border border-red-200";
             }
         };
 
         onAuthStateChanged(auth, (user) => {
-            currentUser = user;
+            if (user) {
+                currentUser = user;
+                const statusEl = document.getElementById('connectionStatus');
+                statusEl.innerText = "CONNECTED";
+                statusEl.className = "connection-indicator bg-green-100 text-green-600 border border-green-200";
+            }
         });
 
-        // Dashboard Trigger (Triple Click)
         const logoTrigger = document.getElementById('logoTrigger');
         const dashboardModal = document.getElementById('dashboardModal');
         const participantCount = document.getElementById('participantCount');
@@ -384,7 +386,6 @@
         async function refreshDashboard() {
             if (!currentUser) {
                 await initAuth();
-                if (!currentUser) return;
             }
             
             dashboardLoading.classList.remove('hidden');
@@ -430,18 +431,17 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Kaizen_Export_${new Date().getTime()}.csv`;
+            a.download = `Kaizen_Feedback_Data_${new Date().getTime()}.csv`;
             a.click();
         });
 
-        // Form Logic
         const form = document.getElementById('feedbackForm');
         const successModal = document.getElementById('successModal');
         const submitBtn = document.getElementById('submitBtn');
         const errorToast = document.getElementById('errorToast');
 
         const showError = (msg) => {
-            errorToast.innerText = msg || "An error occurred. Please try again.";
+            errorToast.innerText = msg || "Something went wrong. Please try again.";
             errorToast.style.display = 'block';
             setTimeout(() => { errorToast.style.display = 'none'; }, 4000);
         };
@@ -450,9 +450,12 @@
             e.preventDefault();
             
             if (!currentUser) {
-                showError("Establishing secure connection...");
+                showError("Establishing connection... please wait.");
                 await initAuth();
-                if(!currentUser) return;
+                if (!currentUser) {
+                    showError("Could not connect. Please check your internet.");
+                    return;
+                }
             }
 
             submitBtn.disabled = true;
@@ -479,13 +482,14 @@
                 const feedbackCol = collection(db, 'artifacts', appId, 'public', 'data', 'feedback');
                 
                 let success = false;
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 3; i++) { // Retry 3 times
                     try {
                         await addDoc(feedbackCol, formData);
                         success = true;
                         break;
                     } catch (e) {
-                        await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
+                        console.error(`Attempt ${i+1} failed:`, e);
+                        await new Promise(r => setTimeout(r, 1000));
                     }
                 }
 
@@ -493,7 +497,7 @@
                     successModal.style.display = 'flex';
                     form.reset();
                 } else {
-                    showError("Sync failed. Please check internet.");
+                    showError("Database write failed. Check your Firebase Rules.");
                 }
             } catch (error) {
                 console.error("Firestore Error:", error);
