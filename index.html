@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaizen Feedback Form | Anaamalais Group</title>
+    <title>Kaizen Program 2026 | Feedback Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -116,7 +116,7 @@
             position: fixed;
             inset: 0;
             z-index: 200;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.92);
             backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
@@ -145,11 +145,53 @@
         .animate-pop {
             animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
+
+        .star-rating svg {
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), fill 0.2s ease;
+        }
+        
+        .star-rating svg:active {
+            transform: scale(0.8);
+        }
+
+        .star-rating svg.active {
+            fill: #f59e0b;
+            stroke: #f59e0b;
+            filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.3));
+        }
+
+        /* Ad Slider Styles */
+        .ad-slider-container {
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            gap: 16px;
+            padding: 10px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .ad-slider-container::-webkit-scrollbar { display: none; }
+        
+        .ad-card {
+            flex: 0 0 90%;
+            scroll-snap-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background: white;
+            border: 1px solid #f1f5f9;
+        }
+        .ad-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <div id="connectionStatus" class="connection-indicator bg-amber-100 text-amber-600 border border-amber-200">CONNECTING...</div>
+    <div id="connectionStatus" class="connection-indicator bg-amber-100 text-amber-600 border border-amber-200 uppercase">Connecting...</div>
     <div id="errorToast">Something went wrong. Please try again.</div>
 
     <div class="floating-bg -top-20 -left-20"></div>
@@ -176,8 +218,8 @@
                 <h1 class="text-4xl font-extrabold tracking-tight leading-tight">Kaizen Program <span class="text-blue-200 text-3xl">2026</span></h1>
                 <p class="text-blue-50 font-medium text-lg mt-1">For Young Indians</p>
                 <div class="flex gap-2 mt-5">
-                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase">Continuous Improvement</span>
-                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase">Yi Partner</span>
+                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider">Continuous Improvement</span>
+                    <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider">Leadership</span>
                 </div>
             </div>
         </div>
@@ -188,7 +230,6 @@
             <div class="flex items-end justify-between mb-8">
                 <div>
                     <h2 class="text-2xl font-bold text-gray-900">Feedback Form</h2>
-                    <p class="text-gray-500 text-sm font-medium">Your data is saved securely</p>
                 </div>
                 <div class="bg-blue-50 p-3 rounded-2xl">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -208,47 +249,73 @@
                     </div>
                 </div>
 
-                <!-- Contact -->
-                <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact Number</label>
-                    <div class="relative">
-                        <input type="tel" id="contact" required placeholder="+91 ..." 
-                            class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
-                        <div class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <!-- Contact & Email -->
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="input-group">
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact Number</label>
+                        <div class="relative">
+                            <input type="tel" id="contact" required placeholder="+91 ..." 
+                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                            <div class="input-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Email Address</label>
+                        <div class="relative">
+                            <input type="email" id="email" required placeholder="name@email.com" 
+                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                            <div class="input-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Email -->
-                <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Email Address</label>
-                    <div class="relative">
-                        <input type="email" id="email" required placeholder="name@email.com" 
-                            class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
-                        <div class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <!-- Brand and Service -->
+                <div class="space-y-6">
+                    <div class="input-group">
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand or Company</label>
+                        <div class="relative">
+                            <input type="text" id="brand" required placeholder="e.g. Anaamalais Group" 
+                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                            <div class="input-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Product or Service</label>
+                        <div class="relative">
+                            <input type="text" id="service" required placeholder="e.g. Automotive / Logistics" 
+                                class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
+                            <div class="input-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Brand -->
+                <!-- Rating -->
                 <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand or Service</label>
-                    <div class="relative">
-                        <input type="text" id="brand" required placeholder="Your business name" 
-                            class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
-                        <div class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7L12 12L22 7L12 2Z"></path><path d="M2 17L12 22L22 17"></path><path d="M2 12L12 17L22 12"></path></svg>
-                        </div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2 text-center">Your Rating</label>
+                    <div id="starRating" class="star-rating flex justify-center gap-2 py-2">
+                        <svg data-val="1" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        <svg data-val="2" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        <svg data-val="3" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        <svg data-val="4" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        <svg data-val="5" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                     </div>
                 </div>
 
                 <!-- Feedback -->
                 <div class="input-group">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Your Feedback</label>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Feedback</label>
                     <div class="relative">
-                        <textarea id="feedback" required rows="4" placeholder="How was your experience?" 
+                        <textarea id="feedback" required rows="4" placeholder="How can we improve?" 
                             class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300 resize-none"></textarea>
                         <div class="input-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
@@ -258,60 +325,75 @@
 
                 <button type="submit" id="submitBtn"
                     class="w-full btn-shimmer text-white font-bold py-5 rounded-2xl shadow-xl transform active:scale-[0.97] transition-all duration-200 flex items-center justify-center gap-2 group">
-                    <span>Submit Feedback</span>
+                    <span>Submit Evaluation</span>
                     <svg class="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
             </form>
         </div>
     </main>
 
-    <footer class="text-center pb-10 text-gray-400 px-6">
-        <p class="text-[10px] uppercase font-bold tracking-[0.3em]">© 2026 Anaamalais Group</p>
-    </footer>
-
-    <!-- Success Modal -->
+    <!-- Success Modal with Ads Slider -->
     <div id="successModal" class="success-modal px-6">
-        <div class="bg-white rounded-[3rem] p-10 max-w-sm w-full text-center shadow-2xl animate-pop">
-            <div class="mb-6">
-                <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-50/50">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <div class="bg-white rounded-[3rem] p-6 max-w-md w-full text-center shadow-2xl animate-pop overflow-hidden">
+            <div class="mb-4">
+                <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-50/50">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-4">Thank You!</h3>
+                <p class="text-gray-500 text-sm font-medium">Your feedback is valued.</p>
             </div>
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Thank You!</h3>
-            <p class="text-gray-500 font-medium leading-relaxed">Your feedback has been successfully shared with the Kaizen team.</p>
-            <button onclick="closeModal('successModal')" class="mt-8 w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-                Great, Thanks!
+
+            <div class="border-t border-gray-100 pt-6 mt-4">
+                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-4 text-left px-2">Explore Mobility Services</p>
+                
+                <div class="ad-slider-container">
+                    <!-- Image 1: Eco Car Wash -->
+                    <div class="ad-card">
+                        <img src="https://i.postimg.cc/1X87qYpb/Screenshot-2026-02-28-145922.png" alt="Eco Car Wash">
+                    </div>
+                    <!-- Image 2: Driver Service -->
+                    <div class="ad-card">
+                        <img src="https://i.postimg.cc/L5GCBBDK/Screenshot-2026-02-28-145404.png" alt="Driver Service">
+                    </div>
+                    <!-- Image 3: Multibrand Car Service -->
+                    <div class="ad-card">
+                        <img src="https://i.postimg.cc/zv4tSS71/Screenshot-2026-02-28-145432.png" alt="Multibrand Car Service">
+                    </div>
+                    <!-- Image 4: Towing Service -->
+                    <div class="ad-card">
+                        <img src="https://i.postimg.cc/fy12jjCQ/Screenshot-2026-02-28-145504.png" alt="Towing Service">
+                    </div>
+                </div>
+                
+                <p class="text-[9px] text-gray-300 mt-2 italic text-center">Swipe to explore more</p>
+            </div>
+
+            <button onclick="closeModal('successModal')" class="mt-6 w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                Done
             </button>
         </div>
     </div>
 
-    <!-- Dashboard Modal -->
+    <!-- Admin Dashboard Modal -->
     <div id="dashboardModal" class="dashboard-modal">
         <div class="bg-white rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl overflow-hidden relative animate-pop">
             <button onclick="closeModal('dashboardModal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
-            
             <div class="mb-8">
                 <h3 class="text-2xl font-extrabold text-gray-900">Kaizen Insights</h3>
                 <p class="text-gray-500 text-sm font-medium">Real-time submission analytics</p>
             </div>
-
             <div class="grid grid-cols-1 gap-6 mb-8">
                 <div class="bg-blue-50 rounded-3xl p-6 border border-blue-100">
                     <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Total Participants</span>
                     <div id="participantCount" class="text-5xl font-black text-blue-900 mt-2">0</div>
                 </div>
             </div>
-
             <div id="dashboardLoading" class="hidden flex justify-center py-4">
-                <svg class="animate-spin h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+                <svg class="animate-spin h-8 w-8 text-blue-600" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
             </div>
-
-            <button id="downloadBtn" class="w-full bg-gray-900 text-white font-bold py-5 rounded-2xl shadow-xl hover:bg-black transition-all flex items-center justify-center gap-2 group">
+            <button id="downloadBtn" class="w-full bg-gray-900 text-white font-bold py-5 rounded-2xl shadow-xl hover:bg-black transition-all flex items-center justify-center gap-2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span>Download CSV Report</span>
             </button>
@@ -322,11 +404,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'kaizen-3d0c1';
-        
-        // HARDCODED CONFIG FOR EXTERNAL HOSTING (GITHUB)
+        const appId = 'kaizen-3d0c1';
         const firebaseConfig = {
             apiKey: "AIzaSyDVL4cgD2B1M93rkTbEUXCJ-8FK4P2LsGU", 
             authDomain: "kaizen-3d0c1.firebaseapp.com",
@@ -343,176 +423,110 @@
 
         let currentUser = null;
         let cachedData = [];
+        let selectedRating = 0;
 
+        // Star Selection
+        const stars = document.querySelectorAll('#starRating svg');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.getAttribute('data-val'));
+                stars.forEach((s, idx) => s.classList.toggle('active', idx < selectedRating));
+            });
+        });
+
+        // Connection Handling
         const initAuth = async () => {
             const statusEl = document.getElementById('connectionStatus');
             try {
-                // Force sign in anonymously to ensure write access if Rules allow it
                 const userCredential = await signInAnonymously(auth);
                 currentUser = userCredential.user;
-                
                 statusEl.innerText = "CONNECTED";
                 statusEl.className = "connection-indicator bg-green-100 text-green-600 border border-green-200";
-                console.log("Auth Successful:", currentUser.uid);
             } catch (err) {
-                console.error("Auth error:", err);
                 statusEl.innerText = "OFFLINE MODE";
                 statusEl.className = "connection-indicator bg-red-100 text-red-600 border border-red-200";
             }
         };
+        onAuthStateChanged(auth, (user) => { if(user) currentUser = user; });
+        initAuth();
 
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                currentUser = user;
-                const statusEl = document.getElementById('connectionStatus');
-                statusEl.innerText = "CONNECTED";
-                statusEl.className = "connection-indicator bg-green-100 text-green-600 border border-green-200";
-            }
-        });
-
-        const logoTrigger = document.getElementById('logoTrigger');
-        const dashboardModal = document.getElementById('dashboardModal');
-        const participantCount = document.getElementById('participantCount');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const dashboardLoading = document.getElementById('dashboardLoading');
-
-        logoTrigger.addEventListener('click', async (e) => {
+        // Admin Dashboard Trigger
+        document.getElementById('logoTrigger').addEventListener('click', (e) => {
             if (e.detail === 3) {
-                dashboardModal.style.display = 'flex';
-                await refreshDashboard();
+                document.getElementById('dashboardModal').style.display = 'flex';
+                refreshDashboard();
             }
         });
 
         async function refreshDashboard() {
-            if (!currentUser) {
-                await initAuth();
-            }
-            
-            dashboardLoading.classList.remove('hidden');
-            participantCount.innerText = "...";
-            
+            const loading = document.getElementById('dashboardLoading');
+            const count = document.getElementById('participantCount');
+            loading.classList.remove('hidden');
+            count.innerText = "...";
             try {
-                const feedbackCol = collection(db, 'artifacts', appId, 'public', 'data', 'feedback');
-                const querySnapshot = await getDocs(feedbackCol);
-                
+                const querySnapshot = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'feedback'));
                 cachedData = [];
-                querySnapshot.forEach((doc) => {
-                    cachedData.push(doc.data());
-                });
-                
-                participantCount.innerText = cachedData.length;
-            } catch (error) {
-                console.error("Dashboard Fetch Error:", error);
-                participantCount.innerText = "!";
-            } finally {
-                dashboardLoading.classList.add('hidden');
-            }
+                querySnapshot.forEach(doc => cachedData.push(doc.data()));
+                count.innerText = cachedData.length;
+            } catch (e) { count.innerText = "!"; }
+            finally { loading.classList.add('hidden'); }
         }
 
-        downloadBtn.addEventListener('click', () => {
+        document.getElementById('downloadBtn').addEventListener('click', () => {
             if (cachedData.length === 0) return;
-
-            const headers = ["Name", "Contact", "Email", "Brand", "Feedback", "Timestamp"];
+            const headers = ["Name", "Contact", "Email", "Brand", "Service", "Rating", "Feedback", "Timestamp"];
             const csvRows = [headers.join(",")];
-
             cachedData.forEach(item => {
-                const row = [
-                    `"${item.name || ''}"`,
-                    `"${item.contact || ''}"`,
-                    `"${item.email || ''}"`,
-                    `"${item.brand || ''}"`,
-                    `"${(item.feedback || '').replace(/"/g, '""')}"`,
-                    `"${item.submittedAt || ''}"`
-                ];
-                csvRows.push(row.join(","));
+                csvRows.push([`"${item.name}"`,`"${item.contact}"`,`"${item.email}"`,`"${item.brand}"`,`"${item.service}"`,`"${item.rating}"`,`"${(item.feedback||'').replace(/"/g,'""')}"`,`"${item.submittedAt}"`].join(","));
             });
-
             const blob = new Blob([csvRows.join("\n")], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url;
-            a.download = `Kaizen_Feedback_Data_${new Date().getTime()}.csv`;
+            a.href = window.URL.createObjectURL(blob);
+            a.download = `Kaizen_Data_2026.csv`;
             a.click();
         });
 
-        const form = document.getElementById('feedbackForm');
-        const successModal = document.getElementById('successModal');
-        const submitBtn = document.getElementById('submitBtn');
-        const errorToast = document.getElementById('errorToast');
-
-        const showError = (msg) => {
-            errorToast.innerText = msg || "Something went wrong. Please try again.";
-            errorToast.style.display = 'block';
-            setTimeout(() => { errorToast.style.display = 'none'; }, 4000);
-        };
-
-        form.addEventListener('submit', async function(e) {
+        // Form Submission
+        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            if (!currentUser) {
-                showError("Establishing connection... please wait.");
-                await initAuth();
-                if (!currentUser) {
-                    showError("Could not connect. Please check your internet.");
-                    return;
-                }
-            }
-
+            if (selectedRating === 0) { showError("Please select a star rating."); return; }
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtn = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            const originalBtnContent = submitBtn.innerHTML;
-            submitBtn.innerHTML = `
-                <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span>Synchronizing...</span>
-            `;
+            submitBtn.innerHTML = `<span>Synchronizing...</span>`;
             
             const formData = {
                 name: document.getElementById('name').value,
                 contact: document.getElementById('contact').value,
                 email: document.getElementById('email').value,
                 brand: document.getElementById('brand').value,
+                service: document.getElementById('service').value,
+                rating: selectedRating,
                 feedback: document.getElementById('feedback').value,
                 submittedAt: new Date().toISOString(),
-                userId: currentUser.uid
+                userId: currentUser?.uid || "anon"
             };
 
             try {
-                const feedbackCol = collection(db, 'artifacts', appId, 'public', 'data', 'feedback');
-                
-                let success = false;
-                for (let i = 0; i < 3; i++) { // Retry 3 times
-                    try {
-                        await addDoc(feedbackCol, formData);
-                        success = true;
-                        break;
-                    } catch (e) {
-                        console.error(`Attempt ${i+1} failed:`, e);
-                        await new Promise(r => setTimeout(r, 1000));
-                    }
-                }
-
-                if (success) {
-                    successModal.style.display = 'flex';
-                    form.reset();
-                } else {
-                    showError("Database write failed. Check your Firebase Rules.");
-                }
-            } catch (error) {
-                console.error("Firestore Error:", error);
-                showError();
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnContent;
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'feedback'), formData);
+                document.getElementById('successModal').style.display = 'flex';
+                this.reset();
+                selectedRating = 0;
+                stars.forEach(s => s.classList.remove('active'));
+            } catch (error) { showError("Failed to save. Check internet."); }
+            finally { 
+                submitBtn.disabled = false; 
+                submitBtn.innerHTML = originalBtn;
             }
         });
 
-        window.closeModal = (id) => {
-            document.getElementById(id).style.display = 'none';
-        };
+        function showError(msg) {
+            const toast = document.getElementById('errorToast');
+            toast.innerText = msg; toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 4000);
+        }
 
-        initAuth();
+        window.closeModal = (id) => document.getElementById(id).style.display = 'none';
     </script>
 </body>
 </html>
