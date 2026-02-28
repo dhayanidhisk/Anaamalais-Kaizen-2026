@@ -260,6 +260,7 @@
             </div>
 
             <form id="feedbackForm" class="space-y-6">
+                <!-- Full Name -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Full Name</label>
                     <div class="relative">
@@ -271,6 +272,7 @@
                     </div>
                 </div>
 
+                <!-- Contact and Email -->
                 <div class="grid grid-cols-1 gap-6">
                     <div class="input-group">
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact Number</label>
@@ -296,8 +298,9 @@
                 </div>
 
                 <div class="space-y-6">
+                    <!-- Brand Updated Label -->
                     <div class="input-group">
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand or Company</label>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Name of your Company</label>
                         <div class="relative">
                             <input type="text" id="brand" required placeholder="e.g. Anaamalais Group" 
                                 class="w-full pl-11 pr-4 py-4 bg-gray-50/50 rounded-2xl focus:bg-white text-gray-800 placeholder:text-gray-300">
@@ -307,6 +310,7 @@
                         </div>
                     </div>
 
+                    <!-- Service Field -->
                     <div class="input-group">
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Product or Service</label>
                         <div class="relative">
@@ -319,6 +323,7 @@
                     </div>
                 </div>
 
+                <!-- Star Rating -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2 text-center">Your Rating</label>
                     <div id="starRating" class="star-rating flex justify-center gap-2 py-2">
@@ -330,6 +335,7 @@
                     </div>
                 </div>
 
+                <!-- Feedback Area -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Feedback</label>
                     <div class="relative">
@@ -354,10 +360,10 @@
         <p class="text-[10px] uppercase font-bold tracking-[0.3em]">© 2026 Anaamalais Group</p>
     </footer>
 
-    <!-- Success Modal with Fixed Layers -->
+    <!-- Success Modal with Fixed Header and Footer -->
     <div id="successModal" class="success-modal">
         <div class="modal-container-fixed animate-pop shadow-2xl">
-            <!-- Fixed Header Layer -->
+            <!-- Fixed Top Header -->
             <div class="bg-white px-8 pt-8 pb-4 z-20 border-b border-gray-100 shrink-0 text-center">
                 <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-50/50 mb-4">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -366,7 +372,7 @@
                 <p class="text-gray-500 font-medium mt-1">Your feedback is valued.</p>
             </div>
 
-            <!-- Scrollable Body Layer -->
+            <!-- Scrollable Ads Area -->
             <div class="modal-scroll-area py-6">
                 <p class="text-[11px] font-black uppercase tracking-[0.2em] text-blue-600 mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
@@ -389,7 +395,7 @@
                 </div>
             </div>
 
-            <!-- Fixed Footer Layer -->
+            <!-- Fixed Bottom Footer (Done Button) -->
             <div class="bg-white px-8 pt-4 pb-8 z-20 border-t border-gray-100 shrink-0">
                 <button onclick="closeModal('successModal')" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-100 flex items-center justify-center gap-2">
                     Done
