@@ -323,15 +323,18 @@
 
         // Environment setup
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'kaizen-3d0c1';
+        
+        // Updated config to include your specific credentials for GitHub hosting
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
             : {
-                apiKey: "", 
+                apiKey: "AIzaSyDVL4cgD2B1M93rkTbEUXCJ-8FK4P2LsGU", 
                 authDomain: "kaizen-3d0c1.firebaseapp.com",
                 projectId: "kaizen-3d0c1",
                 storageBucket: "kaizen-3d0c1.firebasestorage.app",
                 messagingSenderId: "510652968892",
-                appId: "1:510652968892:web:36f4e4e1724df0246345b9"
+                appId: "1:510652968892:web:36f4e4e1724df0246345b9",
+                measurementId: "G-3R7R9HNHDM"
             };
 
         // Services
