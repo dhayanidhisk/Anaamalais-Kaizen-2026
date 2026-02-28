@@ -111,16 +111,45 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
+        /* Fixed Success Modal Layout */
         .success-modal, .dashboard-modal {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 200;
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
+        }
+
+        .modal-container-fixed {
+            height: 85vh;
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-scroll-area {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 0 24px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
+        }
+
+        .modal-scroll-area::-webkit-scrollbar {
+            width: 5px;
+        }
+        .modal-scroll-area::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
         }
 
         .connection-indicator {
@@ -138,7 +167,7 @@
         }
 
         @keyframes pop {
-            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
         
@@ -161,28 +190,22 @@
             filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.3));
         }
 
-        /* Ad Slider Styles */
-        .ad-slider-container {
-            width: 100%;
-            overflow-x: auto;
+        .ad-list {
             display: flex;
-            gap: 16px;
-            padding: 10px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 20px;
         }
-        .ad-slider-container::-webkit-scrollbar { display: none; }
-        
-        .ad-card {
-            flex: 0 0 90%;
-            scroll-snap-align: center;
-            border-radius: 20px;
+
+        .ad-image-item {
+            width: 100%;
+            border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             border: 1px solid #f1f5f9;
         }
-        .ad-card img {
+
+        .ad-image-item img {
             width: 100%;
             height: auto;
             display: block;
@@ -237,7 +260,6 @@
             </div>
 
             <form id="feedbackForm" class="space-y-6">
-                <!-- Name -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Full Name</label>
                     <div class="relative">
@@ -249,7 +271,6 @@
                     </div>
                 </div>
 
-                <!-- Contact & Email -->
                 <div class="grid grid-cols-1 gap-6">
                     <div class="input-group">
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Contact Number</label>
@@ -274,7 +295,6 @@
                     </div>
                 </div>
 
-                <!-- Brand and Service -->
                 <div class="space-y-6">
                     <div class="input-group">
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Brand or Company</label>
@@ -299,7 +319,6 @@
                     </div>
                 </div>
 
-                <!-- Rating -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2 text-center">Your Rating</label>
                     <div id="starRating" class="star-rating flex justify-center gap-2 py-2">
@@ -311,7 +330,6 @@
                     </div>
                 </div>
 
-                <!-- Feedback -->
                 <div class="input-group">
                     <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest ml-1 mb-2">Feedback</label>
                     <div class="relative">
@@ -332,45 +350,52 @@
         </div>
     </main>
 
-    <!-- Success Modal with Ads Slider -->
-    <div id="successModal" class="success-modal px-6">
-        <div class="bg-white rounded-[3rem] p-6 max-w-md w-full text-center shadow-2xl animate-pop overflow-hidden">
-            <div class="mb-4">
-                <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-50/50">
+    <footer class="text-center pb-10 text-gray-400 px-6">
+        <p class="text-[10px] uppercase font-bold tracking-[0.3em]">© 2026 Anaamalais Group</p>
+    </footer>
+
+    <!-- Success Modal with Fixed Layers -->
+    <div id="successModal" class="success-modal">
+        <div class="modal-container-fixed animate-pop shadow-2xl">
+            <!-- Fixed Header Layer -->
+            <div class="bg-white px-8 pt-8 pb-4 z-20 border-b border-gray-100 shrink-0 text-center">
+                <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-50/50 mb-4">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
-                <h3 class="text-2xl font-extrabold text-gray-900 mt-4">Thank You!</h3>
-                <p class="text-gray-500 text-sm font-medium">Your feedback is valued.</p>
+                <h3 class="text-3xl font-extrabold text-gray-900">Thank You!</h3>
+                <p class="text-gray-500 font-medium mt-1">Your feedback is valued.</p>
             </div>
 
-            <div class="border-t border-gray-100 pt-6 mt-4">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-4 text-left px-2">Explore Mobility Services</p>
+            <!-- Scrollable Body Layer -->
+            <div class="modal-scroll-area py-6">
+                <p class="text-[11px] font-black uppercase tracking-[0.2em] text-blue-600 mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                    Explore Mobility Services
+                </p>
                 
-                <div class="ad-slider-container">
-                    <!-- Image 1: Eco Car Wash -->
-                    <div class="ad-card">
+                <div class="ad-list">
+                    <div class="ad-image-item">
                         <img src="https://i.postimg.cc/1X87qYpb/Screenshot-2026-02-28-145922.png" alt="Eco Car Wash">
                     </div>
-                    <!-- Image 2: Driver Service -->
-                    <div class="ad-card">
+                    <div class="ad-image-item">
                         <img src="https://i.postimg.cc/L5GCBBDK/Screenshot-2026-02-28-145404.png" alt="Driver Service">
                     </div>
-                    <!-- Image 3: Multibrand Car Service -->
-                    <div class="ad-card">
+                    <div class="ad-image-item">
                         <img src="https://i.postimg.cc/zv4tSS71/Screenshot-2026-02-28-145432.png" alt="Multibrand Car Service">
                     </div>
-                    <!-- Image 4: Towing Service -->
-                    <div class="ad-card">
+                    <div class="ad-image-item">
                         <img src="https://i.postimg.cc/fy12jjCQ/Screenshot-2026-02-28-145504.png" alt="Towing Service">
                     </div>
                 </div>
-                
-                <p class="text-[9px] text-gray-300 mt-2 italic text-center">Swipe to explore more</p>
             </div>
 
-            <button onclick="closeModal('successModal')" class="mt-6 w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-                Done
-            </button>
+            <!-- Fixed Footer Layer -->
+            <div class="bg-white px-8 pt-4 pb-8 z-20 border-t border-gray-100 shrink-0">
+                <button onclick="closeModal('successModal')" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-100 flex items-center justify-center gap-2">
+                    Done
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -425,7 +450,6 @@
         let cachedData = [];
         let selectedRating = 0;
 
-        // Star Selection
         const stars = document.querySelectorAll('#starRating svg');
         stars.forEach(star => {
             star.addEventListener('click', () => {
@@ -434,7 +458,6 @@
             });
         });
 
-        // Connection Handling
         const initAuth = async () => {
             const statusEl = document.getElementById('connectionStatus');
             try {
@@ -450,7 +473,6 @@
         onAuthStateChanged(auth, (user) => { if(user) currentUser = user; });
         initAuth();
 
-        // Admin Dashboard Trigger
         document.getElementById('logoTrigger').addEventListener('click', (e) => {
             if (e.detail === 3) {
                 document.getElementById('dashboardModal').style.display = 'flex';
@@ -482,11 +504,10 @@
             const blob = new Blob([csvRows.join("\n")], { type: 'text/csv' });
             const a = document.createElement('a');
             a.href = window.URL.createObjectURL(blob);
-            a.download = `Kaizen_Data_2026.csv`;
+            a.download = `Kaizen_Feedback_2026.csv`;
             a.click();
         });
 
-        // Form Submission
         document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             if (selectedRating === 0) { showError("Please select a star rating."); return; }
@@ -513,7 +534,7 @@
                 this.reset();
                 selectedRating = 0;
                 stars.forEach(s => s.classList.remove('active'));
-            } catch (error) { showError("Failed to save. Check internet."); }
+            } catch (error) { showError("Submission failed. Check internet."); }
             finally { 
                 submitBtn.disabled = false; 
                 submitBtn.innerHTML = originalBtn;
@@ -526,7 +547,15 @@
             setTimeout(() => toast.style.display = 'none', 4000);
         }
 
-        window.closeModal = (id) => document.getElementById(id).style.display = 'none';
+        window.closeModal = (id) => {
+            const modal = document.getElementById(id);
+            modal.style.display = 'none';
+            if(id === 'successModal') {
+                modal.querySelector('.modal-scroll-area').scrollTop = 0;
+            }
+        };
+
+        initAuth();
     </script>
 </body>
 </html>
